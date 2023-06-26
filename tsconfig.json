@@ -4,6 +4,8 @@
             "./node_modules/@types",
             "src/helper/types"
         ],
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "module": "commonjs",
+        "target": "es6"
     }
 }

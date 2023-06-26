@@ -1,4 +1,5 @@
 import { expect, Page } from "@playwright/test";
+import { timeStamp } from "console";
 
 export default class RegisterPage {
 
@@ -31,8 +32,11 @@ export default class RegisterPage {
         gender: string) {
         await this.page.type(this.Elements.fName, firstname);
         await this.page.type(this.Elements.lname, lastname);
+       
         // this must be unique always
-        await this.enterUsername(userName);
+        const timestamp = Date.now().toString();
+        await this.page.type(this.Elements.userName, `userName${timestamp}`);
+        
         await this.page.type(this.Elements.password, password);
         await this.page.type(this.Elements.confirmPassword, confirmPassword);
         if (gender == "m") {
@@ -44,19 +48,6 @@ export default class RegisterPage {
         }
         const regBtn = this.page.locator(this.Elements.regBtn);
         await regBtn.click();
-    }
-
-    //enter the username
-    async enterUsername(userName: string) {
-        await this.page.type(this.Elements.userName, userName);
-        const [response] = await Promise.all([
-            this.page.waitForResponse(res => {
-                return res.status() == 200
-                    &&
-                    res.url() == `https://bookcart.azurewebsites.net/api/user/validateUserName/${userName}`
-            })
-        ]);
-        await response.finished();
     }
 
     //bookcart logo is visible

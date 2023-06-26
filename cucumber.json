@@ -1,6 +1,6 @@
 {
     "default": {
-        "tags": "@login",
+        "tags": "@register",
         "formatOptions": {
             "snippetInterface": "async-await"
         },

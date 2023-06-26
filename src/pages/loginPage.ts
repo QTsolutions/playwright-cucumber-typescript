@@ -56,6 +56,7 @@ export default class LoginPage {
        return this.page.textContent;
     }
 
+    //verify that username is displayed after login is success
     async getUserAfterLogin(){
         return this.page.locator(this.Elements.loginUserDisplay);
     }

@@ -41,6 +41,7 @@ export default class CartPage {
         await this.page.waitForTimeout(2000);
     }
 
+    //verify that shopping cart is empty after click on clear cart button
     async clearCart(){
         const emptyCartItem = this.page.locator(this.Elements.emptyCart);
         return emptyCartItem;
