@@ -1,21 +1,27 @@
+const os = require("os");
 const report = require("multiple-cucumber-html-reporter");
 
+const browserName = process.env.BROWSER || "default-browser"; 
+
 report.generate({
-    jsonDir: "test-results",
-    reportPath: "test-results/reports/",
-    reportName: "Playwright Automation Report",
-    pageTitle: "BookCart App test report",
-    displayDuration: false,
+    jsonDir: 'test-results',
+    reportPath: 'test-results/reports/',
+    pageTitle: 'BookCart App test report',
+    reportName: 'Playwright Automation Report',
+    displayDuration: true,
+    displayReportTime: true,
+    hideMetadata: false,
+    customMetadata: false,
     metadata: {
-        browser: {
-            name: "chrome",
-            version: "114",
-        },
-        device: "Preksha",
-        platform: {
-            name: "Windows",
-            version: "11",
-        },
+      browser: {
+        name: browserName,
+        version: os.release(),
+      },
+      device: os.hostname(),
+      platform: {
+        name: os.type(),
+        version: os.release(),
+      },
     },
     customData: {
         title: "Test Info",
