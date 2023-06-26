@@ -35,6 +35,8 @@ Then('Login should be success', async function () {
     const text = await loginPage.loginSucess();
     console.log("Username: " + text);
     fixture.logger.info("Username: " + text);
+    const loginUser = await loginPage.getUserAfterLogin();
+    expect(loginUser).toBeVisible();
 })
 
 When('Login should fail', async function () {

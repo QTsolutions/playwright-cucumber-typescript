@@ -19,6 +19,8 @@ When('user add the book to the cart', async function () {
     expect(snackbar).toBeVisible();
 });
 
-Then('the cart badge should get updated', async function () {
+Then('the cart badge should get updated and clear the cart', async function () {
     await cartPage.getCartValue();
+    const emptyCartItem = await cartPage.clearCart();
+    expect(emptyCartItem).toBeVisible();
 });

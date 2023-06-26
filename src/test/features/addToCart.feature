@@ -11,7 +11,7 @@ Feature: Add products to cart
     And User click on the login button
     When user search for a "<book>"
     And user add the book to the cart
-    Then the cart badge should get updated
+    Then the cart badge should get updated and clear the cart
 
     Examples: 
       | username | password  | book            |

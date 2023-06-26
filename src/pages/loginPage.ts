@@ -9,7 +9,8 @@ export default class LoginPage {
         loginLinkBtn: "//span[text()='Login']",
         userInput: "Username",
         passwordInput: "Password",
-        loginBtn: "button[color='primary']"
+        loginBtn: "button[color='primary']",
+        loginUserDisplay: "//button[contains(@class,'mat-focus-indicator mat-menu-trigger')]//span[1]"
     }
 
     //clcik on  the login text on the home page
@@ -53,6 +54,10 @@ export default class LoginPage {
     //login is success
     async loginSucess(){
        return this.page.textContent;
+    }
+
+    async getUserAfterLogin(){
+        return this.page.locator(this.Elements.loginUserDisplay);
     }
 
 }
